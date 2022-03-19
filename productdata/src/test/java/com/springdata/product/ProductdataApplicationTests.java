@@ -2,8 +2,8 @@ package com.springdata.product;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import org.junit.After;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 import com.springdata.product.entities.Product;
 import com.springdata.product.repos.ProductRepository;
 
@@ -50,10 +49,20 @@ class ProductdataApplicationTests {
 	}
 
 	@Test
-	public void testSearch() {
+	public void testSearchByName() {
 		List<Product> productList = productRepository.findByName("IOS");
 		if(productList != null && !productList.isEmpty()) {
 			System.out.println(productList.get(0).getName());
+		}else {
+			System.out.println("The searched product is not available");
+		}
+	}
+	
+	@Test
+	public void testSearchByNameAndDesc() {
+		Product product = productRepository.findByNameAndDesc("IOS", "Apple");
+		if(product != null && Objects.nonNull(product)) {
+			System.out.println(product.getPrice());
 		}else {
 			System.out.println("The searched product is not available");
 		}
