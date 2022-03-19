@@ -67,6 +67,15 @@ class ProductdataApplicationTests {
 			System.out.println("The searched product is not available");
 		}
 	}
+	
+	@Test
+	public void testFindByPrice() {
+		List<Product> productList = productRepository.findByPriceGreaterThan(5000d);
+		for(Product product : productList) {
+			System.out.println(product.getName());
+			System.out.println(product.getDesc());
+		}
+	}
 
 	@After
 	public void testDelete() {
