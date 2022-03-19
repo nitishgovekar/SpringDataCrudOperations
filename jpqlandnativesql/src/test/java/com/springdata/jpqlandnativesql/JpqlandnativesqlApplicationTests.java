@@ -1,7 +1,5 @@
 package com.springdata.jpqlandnativesql;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,12 +27,8 @@ class JpqlandnativesqlApplicationTests {
 	 
 
 	@Test
-	void getRecords() {
-		List<Student> studentList = studentRepository.findAllStudents();
-		
-		for(Student student : studentList) {
-			System.out.println(student.getFirstName()+" "+ student.getLastName());
-		}
+	void printAllStudentRecords() {
+		System.out.println(studentRepository.findAllStudents());
 	}
 
 }
