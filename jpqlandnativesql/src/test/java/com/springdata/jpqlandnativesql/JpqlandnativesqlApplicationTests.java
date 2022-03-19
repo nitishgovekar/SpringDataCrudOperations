@@ -44,5 +44,16 @@ class JpqlandnativesqlApplicationTests {
 			System.out.println("FirstName: " + object[0] + " LastName: " + object[1]);
 		}
 	}
+	
+	@Test
+	void findByFirstName() {
+		System.out.println(studentRepository.findAllStudentsByFirstName("Nitish"));
+	}
+	
+	
+	@Test
+	void findByLastName() {
+		System.out.println(studentRepository.findAllStudentsByLastName("Singh"));
+	}
 
 }
