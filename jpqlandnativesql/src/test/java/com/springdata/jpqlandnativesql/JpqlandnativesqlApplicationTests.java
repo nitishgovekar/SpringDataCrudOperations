@@ -1,5 +1,7 @@
 package com.springdata.jpqlandnativesql;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,22 +15,34 @@ class JpqlandnativesqlApplicationTests {
 	@Autowired
 	StudentRepository studentRepository;
 
-	
-	 @Test 
-	 void insertData() {
-	  
-	  Student student = new Student(); student.setFirstName("Nitish");
-	  student.setLastName("Govekar"); student.setScore(88);
-	  studentRepository.save(student);
-	  
-	  Student student2 = new Student(); student2.setFirstName("Ranveer");
-	  student2.setLastName("Singh"); student2.setScore(60);
-	  studentRepository.save(student2); }
-	 
+	@Test
+	void insertData() {
+
+		Student student = new Student();
+		student.setFirstName("Nitish");
+		student.setLastName("Govekar");
+		student.setScore(88);
+		studentRepository.save(student);
+
+		Student student2 = new Student();
+		student2.setFirstName("Ranveer");
+		student2.setLastName("Singh");
+		student2.setScore(60);
+		studentRepository.save(student2);
+	}
 
 	@Test
 	void printAllStudentRecords() {
 		System.out.println(studentRepository.findAllStudents());
+	}
+
+	@Test
+	void printAllStudentPartialRecords() {
+		List<Object[]> objects = studentRepository.findAllStudentPartialData();
+
+		for (Object object[] : objects) {
+			System.out.println("FirstName: " + object[0] + " LastName: " + object[1]);
+		}
 	}
 
 }
