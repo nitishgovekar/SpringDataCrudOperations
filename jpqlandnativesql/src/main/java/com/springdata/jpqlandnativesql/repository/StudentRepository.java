@@ -17,10 +17,13 @@ public interface StudentRepository extends CrudRepository<Student, Integer>{
 	@Query("select st.firstName,st.lastName from Student st ")
 	List<Object[]> findAllStudentPartialData();
 	
-	@Query("from Student s1 where firstName=:fname")
+	@Query("from Student s1 where fname=:fname")
 	List<Student> findAllStudentsByFirstName(@Param("fname") String firstName);
 	
-	@Query("from Student s1 where lastName=:lname")
+	@Query("from Student s1 where lname=:lname")
 	List<Student> findAllStudentsByLastName(@Param("lname") String lastName);
+	
+	@Query("from Student s where s.score >:min and s.score< :max ")
+	List<Student> findAllStudentByMinMaxScores(@Param ("min") int min, @Param("max") int max);	
 
 }
