@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class PhoneNumber {
@@ -15,6 +17,9 @@ public class PhoneNumber {
 	private String number;
 	
 	private String type;
+	@ManyToOne
+	@JoinColumn(name = "cutomer_id")  // Foreign Key name in the table
+	private Customer customer;
 
 	public long getId() {
 		return id;
