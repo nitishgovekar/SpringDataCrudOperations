@@ -6,19 +6,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "phonenumber")
 public class PhoneNumber {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id ;
-	
+	private long id;
+
 	private String number;
-	
+
 	private String type;
 	@ManyToOne
-	@JoinColumn(name = "cutomer_id")  // Foreign Key name in the table
+	@JoinColumn(name = "customer_id") // Foreign Key name in the table
 	private Customer customer;
 
 	public long getId() {
@@ -44,6 +46,13 @@ public class PhoneNumber {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 }
