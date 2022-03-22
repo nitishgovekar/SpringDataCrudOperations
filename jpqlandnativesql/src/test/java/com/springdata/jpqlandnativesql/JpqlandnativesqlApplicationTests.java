@@ -67,4 +67,9 @@ class JpqlandnativesqlApplicationTests {
 	void deleteStudentRecord() {
 		studentRepository.deleteFromStudent("Nitish");
 	}
+	
+	@Test
+	void printAllRecordsNQ() {
+		System.out.println(studentRepository.findAllStudentNQ());
+	}
 }
